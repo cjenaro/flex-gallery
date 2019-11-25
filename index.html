@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Flex Gallery</title>
+  </head>
+  <body>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
+
+      .panels {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        flex: 1;
+        font-size: 40px;
+        text-transform: uppercase;
+        color: #ffffff;
+        text-decoration-line: overline;
+        text-decoration-style: wavy;
+        text-shadow: 0px 0px 2px #000000;
+        transition: font-size 0.5s cubic-bezier(0.58, -0.39, 0.4, 1.42),
+          flex 0.5s cubic-bezier(0.58, -0.39, 0.4, 1.42);
+      }
+
+      .panel > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        width: 100%;
+        transition: transform 0.5s 0.2s cubic-bezier(0.58, -0.39, 0.4, 1.42);
+        pointer-events: none;
+      }
+
+      .panel > :first-child {
+        transform: translateY(-100%);
+      }
+      .panel > :last-child {
+        transform: translateY(100%);
+      }
+
+      .panel-1 {
+        background-image: url(https://picsum.photos/seed/1picsum/1000);
+      }
+      .panel-2 {
+        background-image: url(https://picsum.photos/seed/2picsum/1000);
+      }
+      .panel-3 {
+        background-image: url(https://picsum.photos/seed/3picsum/1000);
+      }
+      .panel-4 {
+        background-image: url(https://picsum.photos/seed/4picsum/1000);
+      }
+      .panel-5 {
+        background-image: url(https://picsum.photos/seed/5picsum/1000);
+      }
+
+      .panel.open {
+        flex: 5;
+        font-size: 60px;
+      }
+
+      .panel.open > :first-child {
+        transform: translateY(0);
+      }
+      .panel.open > :last-child {
+        transform: translateY(0);
+      }
+    </style>
+
+    <div class="panels">
+      <div class="panel panel-1">
+        <span>Hey</span>
+        <span>Let's</span>
+        <span>Dance</span>
+      </div>
+      <div class="panel panel-2">
+        <span>Give</span>
+        <span>Take</span>
+        <span>Receive</span>
+      </div>
+      <div class="panel panel-3">
+        <span>Experience</span>
+        <span>It</span>
+        <span>Today</span>
+      </div>
+      <div class="panel panel-4">
+        <span>Give</span>
+        <span>All</span>
+        <span>You can</span>
+      </div>
+      <div class="panel panel-5">
+        <span>Life</span>
+        <span>In</span>
+        <span>Motion</span>
+      </div>
+    </div>
+
+    <script>
+      const panels = document.querySelectorAll('.panel')
+
+      function toggleOpen() {
+        this.classList.toggle('open')
+      }
+
+      panels.forEach(panel => {
+        panel.addEventListener('click', toggleOpen)
+      })
+    </script>
+  </body>
+</html>
